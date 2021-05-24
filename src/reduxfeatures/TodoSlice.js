@@ -1,21 +1,19 @@
-
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 
 export const TodoSlice = createSlice({
-    name: "todo",
-    initialState: {
-      todo: "",
-      tasks: [],
-      snackbar: {
-        open: false,
-        message: ""
-      }
-    } ,
-    reducers:{
-        storeTodoInput: (state, action) => {
-            state.todo = action.payload;
-          }
+  name: "todo",
+  initialState: {
+    todo: "",
+    tasks: [],
+    snackbar: {
+      open: false,
+      message: ""
+    }
+  },
+  reducers: {
+    storeTodoInput: (state, action) => {
+      state.todo = action.payload;
     },
     closeSnackbar: (state) => {
       state.snackbar = {
@@ -77,7 +75,6 @@ export const TodoSlice = createSlice({
         };
       }
     },
-
     closeSnackbar: (state) => {
       state.snackbar = {
         open: false,
@@ -100,16 +97,15 @@ export const TodoSlice = createSlice({
         console.log("Action cancelled by user.");
       }
     }
-
-
-  });
+  }
+});
 
 export const {
-    storeTodoInput,
-    addTodo,
-    closeSnackbar,
-    markAsCompleted,
-    deleteTodo
-  } = TodoSlice.actions;
-  
-  export default TodoSlice.reducer;
+  addTodo,
+  storeTodoInput,
+  markAsCompleted,
+  deleteTodo,
+  closeSnackbar
+} = TodoSlice.actions;
+
+export default TodoSlice.reducer;
